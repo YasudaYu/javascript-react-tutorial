@@ -3,7 +3,7 @@ import "./styles.css";
 const onClickAdd = () => {
   const input = document.querySelector("#add-text");
   const inputText = input.value; //textboxの値の取得
-  console.log(inputText);
+  // console.log(inputText);
   input.value = ""; //textboxの値の初期化
 
   //div生成
@@ -21,7 +21,10 @@ const onClickAdd = () => {
   const delbtn = document.createElement("button");
   delbtn.innerText = "削除";
   delbtn.addEventListener("click", () => {
-    alert("削除");
+    //削除ボタンの親タグを未完了TODOから削除
+    const deleteTarget = delbtn.parentNode;
+    // console.log(deleteTarget);
+    document.querySelector("#incomplete-list").removeChild(deleteTarget);
   });
 
   //divタグの子要素に各要素を設定

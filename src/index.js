@@ -15,15 +15,16 @@ const getInputText = () => {
   const inputText = input.value; //textboxの値の取得
   // console.log(inputText);
   input.value = ""; //textboxの値の初期化
-  console.log(inputText);
   return inputText;
 };
 
+//リストからの指定の要素を削除
 const removeFromList = (target, listName) => {
   const parent = target.parentNode;
   document.querySelector(listName).removeChild(parent);
 };
 
+//完了リストへタスクを追加
 const addToCompleteList = (inputText) => {
   const listName = "#complete-list";
   // btn生成
@@ -34,10 +35,10 @@ const addToCompleteList = (inputText) => {
     addToIncompleteList(inputText);
   });
   const btns = [revbtn];
-  console.log(btns);
   createListElement(inputText, btns, listName);
 };
 
+//未完了リストへタスクを追加
 const addToIncompleteList = (inputText) => {
   const listName = "#incomplete-list";
   const cmpbtn = document.createElement("button");
@@ -52,10 +53,10 @@ const addToIncompleteList = (inputText) => {
     removeFromList(delbtn, listName); //削除ボタンの親タグを未完了TODOから削除
   });
   const btns = [cmpbtn, delbtn];
-  console.log(btns);
   createListElement(inputText, btns, listName);
 };
 
+//リストの要素の生成
 const createListElement = (inputText, btns, listName) => {
   //div生成
   const div = document.createElement("div");
@@ -65,8 +66,5 @@ const createListElement = (inputText, btns, listName) => {
   li.innerText = inputText;
   div.appendChild(li);
   btns.map((btn) => div.appendChild(btn));
-  console.log(div);
-  console.log(listName);
   document.querySelector(listName).appendChild(div);
-  console.log(document.querySelector(listName));
 };
